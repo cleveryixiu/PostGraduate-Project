@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="css/detail.css" />
+		<link rel="stylesheet" type="text/css" href="css/business_search.css" />
+		<script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://ajax.lug.ustc.edu.cn/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	</head>
+	<body ng-app="application" ng-controller="appController">
+		<div class="form-wrapper">
+			<input type="text" id="search" placeholder="FoodId" ng-model="query_id" required>
+			<input type="submit" value="Search" id="submit" ng-click="queryTransit()">
+		</div>
+		<table cellspacing="0" id="transit_source">
+			<tr>
+				<th>Departure Time</th>
+				<th>Arrival Time</th>
+				<th>Tracking Number</th>				
+				<th>Departure</th>
+				<th>Arrival</th>
+				<th>Retailer</th>
+				<th>Storage Time</th>
+				<th>Transport Mode</th>
+				<th>Logistics Company</th>
+				<th>Price</th>				
+			</tr>
+			<tr ng-repeat="transit in transit_source">
+				<td>{{transit.LogDepartureTm}}</td>
+				<td>{{transit.LogArrivalTm}}</td>
+				<td>{{transit.LogMission}}</td>
+				<td>{{transit.LogDeparturePl}}</td>
+				<td>{{transit.LogDest}}</td>
+				<td>{{transit.LogToSeller}}</td>
+				<td>{{transit.LogStorageTm}}</td>
+				<td>{{transit.LogMOT}}</td>
+				<td>{{transit.LogCopName}}</td>
+				<td>{{transit.LogCost}}</td>
+        		</tr>
+		</table>
+	</body>
+	<script type="text/javascript" src="/js/app.js"> </script>
+</html>
