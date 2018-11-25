@@ -13,31 +13,29 @@ type FoodChainCode struct{
 }
 
 //food数据结构体
-type FoodInfo struct{
-    FoodID string `json:FoodID`                             //食品ID
-    FoodProInfo ProInfo `json:FoodProInfo`                  //生产信息
-    FoodIngInfo []IngInfo `json:FoodIngInfo`                  //配料信息
-    FoodLogInfo LogInfo `json:FoodLogInfo`                  //物流信息
+type ItemInfo struct{
+    ItemID string `json:ItemID`                             //ItemID
+    ItemProInfo ProInfo `json:ItemProInfo`                  //生产信息
+    ItemIngInfo []IngInfo `json:ItemIngInfo`                //配料信息
+    ItemLogInfo LogInfo `json:ItemLogInfo`                  //物流信息
 }
 
-type FoodAllInfo struct{
-    FoodID string `json:FoodId`
-    FoodProInfo ProInfo `json:FoodProInfo`
-    FoodIngInfo []IngInfo `json:FoodIngInfo`
-    FoodLogInfo []LogInfo `json:FoodLogInfo`
+type ItemAllInfo struct{
+    ItemID string `json:ItemID`
+    ItemProInfo ProInfo `json:ItemProInfo`
+    ItemIngInfo []IngInfo `json:ItemIngInfo`
+    ItemLogInfo []LogInfo `json:ItemLogInfo`
 }
 
 //生产信息
 type ProInfo struct{
-    FoodName string `json:FoodName`                         //食品名称
-    FoodSpec string `json:FoodSpec`                         //食品规格
-    FoodMFGDate string `json:FoodMFGDate`                   //食品出产日期
-    FoodEXPDate string `json:FoodEXPDate`                   //食品保质期
-    FoodLOT string `json:FoodLOT`                           //食品批次号
-    FoodQSID string `json:FoodQSID`                         //食品生产许可证编号
-    FoodMFRSName string `json:FoodMFRSName`                 //食品生产商名称
-    FoodProPrice string `json:FoodProPrice`                 //食品生产价格
-    FoodProPlace string `json:FoodProPlace`                 //食品生产所在地
+    ItemName string `json:ItemName`                         //Item名称
+    ItemSpec string `json:ItemSpec`                         //Item规格
+    ItemMFGDate string `json:ItemMFGDate`                   //Item日期
+    ItemEXPDate string `json:ItemEXPDate`                   //Item保质期
+    ItemLOT string `json:ItemLOT`                           //Item批次号
+    ItemMFRID string `json:ItemMFRID`                       //Item生产商ID
+    ItemLocation string `json:ItemLocation`                 //Item生产所在地
 }
 type IngInfo struct{
     IngID string `json:IngID`                               //配料ID
@@ -47,14 +45,10 @@ type IngInfo struct{
 type LogInfo struct{
     LogDepartureTm string `json:LogDepartureTm`             //出发时间
     LogArrivalTm string `json:LogArrivalTm`                 //到达时间
-    LogMission string `json:LogMission`                     //处理业务(储存or运输)
-    LogDeparturePl string `json:LogDeparturePl`             //出发地
-    LogDest string `json:LogDest`                           //目的地
-    LogToSeller string `json:LogToSeller`                   //销售商
-    LogStorageTm string `json:LogStorageTm`                 //存储时间
+    LogSender string `json:LogSender`                       //寄件方
+    LogReceiver string `json:LogReceiver`                   //收件方
     LogMOT string `json:LogMOT`                             //运送方式
-    LogCopName string `json:LogCopName`                     //物流公司名称
-    LogCost string `json:LogCost`                           //费用
+    LogCopID string `json:LogCopID`                         //物流公司名称
 }
 
 func (a *FoodChainCode) Init(stub shim.ChaincodeStubInterface) pb.Response {
@@ -67,8 +61,8 @@ func (a *FoodChainCode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
         return a.addProInfo(stub,args)
     } else if fn == "addIngInfo"{
         return a.addIngInfo(stub,args)
-    } else if fn == "getFoodInfo"{
-        return a.getFoodInfo(stub,args)
+    } else if fn == "getItemInfo"{
+        return a.getItemInfo(stub,args)
     }else if fn == "addLogInfo"{
         return a.addLogInfo(stub,args)
     }else if fn == "getProInfo"{
@@ -86,32 +80,29 @@ func (a *FoodChainCode) Invoke(stub shim.ChaincodeStubInterface) pb.Response {
 
 func (a *FoodChainCode) addProInfo(stub shim.ChaincodeStubInterface, args []string) pb.Response {
     var err error 
-    var FoodInfos FoodInfo
+    var ItemInfos ItemInfo
 
-    if len(args)!=10{
+    if len(args)!=8{
         return shim.Error("Incorrect number of arguments.")
     }
-    FoodInfos.FoodID = args[0]
-    if FoodInfos.FoodID == ""{
-        return shim.Error("FoodID can not be empty.")
+    ItemInfos.ItemID = args[0]
+    if ItemInfos.ItemID == ""{
+        return shim.Error("ItemID can not be empty.")
     }
     
-    
-    FoodInfos.FoodProInfo.FoodName = args[1]
-    FoodInfos.FoodProInfo.FoodSpec = args[2]
-    FoodInfos.FoodProInfo.FoodMFGDate = args[3]
-    FoodInfos.FoodProInfo.FoodEXPDate = args[4]
-    FoodInfos.FoodProInfo.FoodLOT = args[5]
-    FoodInfos.FoodProInfo.FoodQSID = args[6]
-    FoodInfos.FoodProInfo.FoodMFRSName = args[7]
-    FoodInfos.FoodProInfo.FoodProPrice = args[8]
-    FoodInfos.FoodProInfo.FoodProPlace = args[9]
-    ProInfosJSONasBytes,err := json.Marshal(FoodInfos)
+    ItemInfos.ItemProInfo.ItemName = args[1]
+    ItemInfos.ItemProInfo.ItemSpec = args[2]
+    ItemInfos.ItemProInfo.ItemMFGDate = args[3]
+    ItemInfos.ItemProInfo.ItemEXPDate = args[4]
+    ItemInfos.ItemProInfo.ItemLOT = args[5]
+    ItemInfos.ItemProInfo.ItemMFRID = args[6]
+    ItemInfos.ItemProInfo.ItemLocation = args[7]
+    ProInfosJSONasBytes,err := json.Marshal(ItemInfos)
     if err != nil{
         return shim.Error(err.Error())
     }
 
-    err = stub.PutState(FoodInfos.FoodID,ProInfosJSONasBytes)
+    err = stub.PutState(ItemInfos.ItemID,ProInfosJSONasBytes)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -121,30 +112,30 @@ func (a *FoodChainCode) addProInfo(stub shim.ChaincodeStubInterface, args []stri
 
 func(a *FoodChainCode) addIngInfo (stub shim.ChaincodeStubInterface,args []string) pb.Response{
         
-    var FoodInfos FoodInfo
+    var ItemInfos ItemInfo
     var IngInfoitem IngInfo
 
     if  (len(args)-1)%2 != 0 || len(args) == 1{
         return shim.Error("Incorrect number of arguments")
     }
 
-    FoodID := args[0]
+    ItemID := args[0]
     for i :=1;i < len(args);{   
         IngInfoitem.IngID = args[i]
         IngInfoitem.IngName = args[i+1]
-        FoodInfos.FoodIngInfo = append(FoodInfos.FoodIngInfo,IngInfoitem)
+        ItemInfos.ItemIngInfo = append(ItemInfos.ItemIngInfo,IngInfoitem)
         i = i+2
     }
     
     
-    FoodInfos.FoodID = FoodID
-  /*  FoodInfos.FoodIngInfo = foodIngInfo*/
-    IngInfoJsonAsBytes,err := json.Marshal(FoodInfos)
+    ItemInfos.ItemID = ItemID
+  /*  ItemInfos.ItemIngInfo = ItemIngInfo*/
+    IngInfoJsonAsBytes,err := json.Marshal(ItemInfos)
     if err != nil {
     return shim.Error(err.Error())
     }
 
-    err = stub.PutState(FoodInfos.FoodID,IngInfoJsonAsBytes)
+    err = stub.PutState(ItemInfos.ItemID,IngInfoJsonAsBytes)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -155,31 +146,27 @@ func(a *FoodChainCode) addIngInfo (stub shim.ChaincodeStubInterface,args []strin
 func(a *FoodChainCode) addLogInfo (stub shim.ChaincodeStubInterface,args []string) pb.Response{
  
     var err error
-    var FoodInfos FoodInfo
+    var ItemInfos ItemInfo
 
-    if len(args)!=11{
+    if len(args)!=7{
         return shim.Error("Incorrect number of arguments.")
     }
-    FoodInfos.FoodID = args[0]
-    if FoodInfos.FoodID == ""{
-        return shim.Error("FoodID can not be empty.")
+    ItemInfos.ItemID = args[0]
+    if ItemInfos.ItemID == ""{
+        return shim.Error("ItemID can not be empty.")
     }
-    FoodInfos.FoodLogInfo.LogDepartureTm = args[1]
-    FoodInfos.FoodLogInfo.LogArrivalTm = args[2]
-    FoodInfos.FoodLogInfo.LogMission = args[3]
-    FoodInfos.FoodLogInfo.LogDeparturePl = args[4]
-    FoodInfos.FoodLogInfo.LogDest = args[5]
-    FoodInfos.FoodLogInfo.LogToSeller = args[6]
-    FoodInfos.FoodLogInfo.LogStorageTm = args[7]
-    FoodInfos.FoodLogInfo.LogMOT = args[8]
-    FoodInfos.FoodLogInfo.LogCopName = args[9]
-    FoodInfos.FoodLogInfo.LogCost = args[10]
+    ItemInfos.ItemLogInfo.LogDepartureTm = args[1]
+    ItemInfos.ItemLogInfo.LogArrivalTm = args[2]
+    ItemInfos.ItemLogInfo.LogSender = args[3]
+    ItemInfos.ItemLogInfo.LogReceiver = args[4]
+    ItemInfos.ItemLogInfo.LogMOT = args[5]
+    ItemInfos.ItemLogInfo.LogCopID = args[6]
     
-    LogInfosJSONasBytes,err := json.Marshal(FoodInfos)
+    LogInfosJSONasBytes,err := json.Marshal(ItemInfos)
     if err != nil{
         return shim.Error(err.Error())
     } 
-    err = stub.PutState(FoodInfos.FoodID,LogInfosJSONasBytes)
+    err = stub.PutState(ItemInfos.ItemID,LogInfosJSONasBytes)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -188,37 +175,35 @@ func(a *FoodChainCode) addLogInfo (stub shim.ChaincodeStubInterface,args []strin
 
 
 
-func(a *FoodChainCode) getFoodInfo (stub shim.ChaincodeStubInterface,args []string) pb.Response{
+func(a *FoodChainCode) getItemInfo (stub shim.ChaincodeStubInterface,args []string) pb.Response{
     if len(args) != 1{
         return shim.Error("Incorrect number of arguments.")
     }
-    FoodID := args[0]
-    resultsIterator,err := stub.GetHistoryForKey(FoodID)
+    ItemID := args[0]
+    resultsIterator,err := stub.GetHistoryForKey(ItemID)
     if err != nil {
         return shim.Error(err.Error())
     }
     defer resultsIterator.Close()
     
-    var foodAllinfo FoodAllInfo
+    var ItemAllinfo ItemAllInfo
 
     for resultsIterator.HasNext(){
-        var FoodInfos FoodInfo
+        var ItemInfos ItemInfo
         response,err :=resultsIterator.Next()
         if err != nil {
              return shim.Error(err.Error())
         }
-        json.Unmarshal(response.Value,&FoodInfos)
-        if FoodInfos.FoodProInfo.FoodName !=""{
-            foodAllinfo.FoodProInfo = FoodInfos.FoodProInfo
-        }else if FoodInfos.FoodIngInfo != nil{
-            foodAllinfo.FoodIngInfo = FoodInfos.FoodIngInfo
-        }else if FoodInfos.FoodLogInfo.LogMission !=""{
-            foodAllinfo.FoodLogInfo = append(foodAllinfo.FoodLogInfo,FoodInfos.FoodLogInfo)
+        json.Unmarshal(response.Value,&ItemInfos)
+        if ItemInfos.ItemProInfo.ItemName !=""{
+            ItemAllinfo.ItemProInfo = ItemInfos.ItemProInfo
+        }else if ItemInfos.ItemIngInfo != nil{
+            ItemAllinfo.ItemIngInfo = ItemInfos.ItemIngInfo
         }
 
     }
     
-    jsonsAsBytes,err := json.Marshal(foodAllinfo)
+    jsonsAsBytes,err := json.Marshal(ItemAllinfo)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -232,28 +217,28 @@ func(a *FoodChainCode) getProInfo (stub shim.ChaincodeStubInterface,args []strin
     if len(args) != 1{
         return shim.Error("Incorrect number of arguments.")
     }
-    FoodID := args[0]
-    resultsIterator,err := stub.GetHistoryForKey(FoodID)
+    ItemID := args[0]
+    resultsIterator,err := stub.GetHistoryForKey(ItemID)
     if err != nil {
         return shim.Error(err.Error())
     }
     defer resultsIterator.Close()
     
-    var foodProInfo ProInfo
+    var ItemProInfo ProInfo
 
     for resultsIterator.HasNext(){
-        var FoodInfos FoodInfo
+        var ItemInfos ItemInfo
         response,err :=resultsIterator.Next()
         if err != nil {
             return shim.Error(err.Error())
         }
-        json.Unmarshal(response.Value,&FoodInfos)
-        if FoodInfos.FoodProInfo.FoodName != ""{
-            foodProInfo = FoodInfos.FoodProInfo
+        json.Unmarshal(response.Value,&ItemInfos)
+        if ItemInfos.ItemProInfo.ItemName != ""{
+            ItemProInfo = ItemInfos.ItemProInfo
             continue
         }
     }
-    jsonsAsBytes,err := json.Marshal(foodProInfo)   
+    jsonsAsBytes,err := json.Marshal(ItemProInfo)   
     if err != nil {
         return shim.Error(err.Error())
     }
@@ -265,28 +250,28 @@ func(a *FoodChainCode) getIngInfo (stub shim.ChaincodeStubInterface,args []strin
     if len(args) !=1{
         return shim.Error("Incorrect number of arguments.")
     }
-    FoodID := args[0]
-    resultsIterator,err := stub.GetHistoryForKey(FoodID)
+    ItemID := args[0]
+    resultsIterator,err := stub.GetHistoryForKey(ItemID)
 
     if err != nil{
         return shim.Error(err.Error())
     }
     defer resultsIterator.Close()
     
-    var foodIngInfo []IngInfo
+    var ItemIngInfo []IngInfo
     for resultsIterator.HasNext(){
-        var FoodInfos FoodInfo
+        var ItemInfos ItemInfo
         response,err := resultsIterator.Next()
         if err != nil{
             return shim.Error(err.Error())
         }
-        json.Unmarshal(response.Value,&FoodInfos)
-        if FoodInfos.FoodIngInfo != nil{
-            foodIngInfo = FoodInfos.FoodIngInfo
+        json.Unmarshal(response.Value,&ItemInfos)
+        if ItemInfos.ItemIngInfo != nil{
+            ItemIngInfo = ItemInfos.ItemIngInfo
             continue
         }
     }
-    jsonsAsBytes,err := json.Marshal(foodIngInfo)
+    jsonsAsBytes,err := json.Marshal(ItemIngInfo)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -301,8 +286,8 @@ func(a *FoodChainCode) getLogInfo (stub shim.ChaincodeStubInterface,args []strin
         return shim.Error("Incorrect number of arguments.")
     }
 
-    FoodID := args[0]
-    resultsIterator,err :=stub.GetHistoryForKey(FoodID)
+    ItemID := args[0]
+    resultsIterator,err :=stub.GetHistoryForKey(ItemID)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -310,15 +295,13 @@ func(a *FoodChainCode) getLogInfo (stub shim.ChaincodeStubInterface,args []strin
 
    
     for resultsIterator.HasNext(){
-        var FoodInfos FoodInfo
+        var ItemInfos ItemInfo
         response,err := resultsIterator.Next()
         if err != nil {
             return shim.Error(err.Error())
         }
-        json.Unmarshal(response.Value,&FoodInfos)
-        if FoodInfos.FoodLogInfo.LogMission != ""{
-            LogInfos = append(LogInfos,FoodInfos.FoodLogInfo)
-        }
+        json.Unmarshal(response.Value,&ItemInfos)
+        
     }
     jsonsAsBytes,err := json.Marshal(LogInfos)
     if err != nil{
@@ -334,8 +317,8 @@ func(a *FoodChainCode) getLogInfo_l(stub shim.ChaincodeStubInterface,args []stri
         return shim.Error("Incorrect number of arguments.")
     }
 
-    FoodID := args[0]
-    resultsIterator,err :=stub.GetHistoryForKey(FoodID)
+    ItemID := args[0]
+    resultsIterator,err :=stub.GetHistoryForKey(ItemID)
     if err != nil{
         return shim.Error(err.Error())
     }
@@ -343,16 +326,13 @@ func(a *FoodChainCode) getLogInfo_l(stub shim.ChaincodeStubInterface,args []stri
 
    
     for resultsIterator.HasNext(){
-        var FoodInfos FoodInfo
+        var ItemInfos ItemInfo
         response,err := resultsIterator.Next()
         if err != nil {
             return shim.Error(err.Error())
         }
-        json.Unmarshal(response.Value,&FoodInfos)
-        if FoodInfos.FoodLogInfo.LogMission != ""{
-           Loginfo = FoodInfos.FoodLogInfo
-           continue 
-       }
+        json.Unmarshal(response.Value,&ItemInfos)
+        
     }
     jsonsAsBytes,err := json.Marshal(Loginfo)
     if err != nil{

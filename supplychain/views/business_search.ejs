@@ -13,29 +13,21 @@
 			<input type="submit" value="Search" id="submit" ng-click="queryTransit()">
 		</div>
 		<table cellspacing="0" id="transit_source">
-			<tr>
+			<tr>					
+				<th>Sender</th>
+				<th>Receiver</th>
 				<th>Departure Time</th>
 				<th>Arrival Time</th>
-				<th>Tracking Number</th>				
-				<th>Departure</th>
-				<th>Arrival</th>
-				<th>Retailer</th>
-				<th>Storage Time</th>
 				<th>Transport Mode</th>
-				<th>Logistics Company</th>
-				<th>Price</th>				
+				<th>Logistics Company</th>			
 			</tr>
 			<tr ng-repeat="transit in transit_source">
+				<td>{{transit.LogSender}}</td>
+				<td>{{transit.LogReceiver}}</td>
 				<td>{{transit.LogDepartureTm}}</td>
 				<td>{{transit.LogArrivalTm}}</td>
-				<td>{{transit.LogMission}}</td>
-				<td>{{transit.LogDeparturePl}}</td>
-				<td>{{transit.LogDest}}</td>
-				<td>{{transit.LogToSeller}}</td>
-				<td>{{transit.LogStorageTm}}</td>
 				<td>{{transit.LogMOT}}</td>
-				<td>{{transit.LogCopName}}</td>
-				<td>{{transit.LogCost}}</td>
+				<td>{{transit.LogCopID}}</td>
         		</tr>
 		</table>
 	</body>

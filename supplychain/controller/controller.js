@@ -6,7 +6,6 @@ var fs            = require('fs');
 var Fabric_Client = require('fabric-client');
 var path          = require('path');
 var util          = require('util');
-var os            = require('os');
 
 module.exports = (function() {
 return{
@@ -418,7 +417,7 @@ return{
 		    }
 		}).catch((err) => {
 		    console.error('Failed to query successfully :: ' + err);
-		    res.send("Could not locate tuna")
+		    res.send("Could not find food")
 		});
 	},
 

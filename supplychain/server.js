@@ -1,7 +1,7 @@
 var path = require('path')
 var express = require('express')
 var layout = require('express-layout')
-var routes = require('./routes')
+var routes = require('./controller/routes')
 var app = express()
 var bodyParser = require('body-parser')
 var flash = require('express-flash')
@@ -24,7 +24,7 @@ const middlewares = [
 app.use(middlewares)
 app.use(express.static(path.join(__dirname, 'views')));
 app.set('view engine', 'ejs');
-require('./routes.js')(app);
+require('./controller/routes.js')(app);
 
 app.use((req, res, next) => {
   res.status(404).send("Sorry can not find that!")
