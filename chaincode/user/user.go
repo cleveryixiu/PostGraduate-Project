@@ -23,8 +23,6 @@ type UserInfo struct{
     UserID  string  `json:UserID`                               //用户唯一ID
 }
 
-
-
 func (a *UserChainCode) Init(stub shim.ChaincodeStubInterface) pb.Response {
     return shim.Success(nil)
 }
@@ -80,18 +78,8 @@ func (a *UserChainCode) addUserInfo(stub shim.ChaincodeStubInterface, args []str
         return shim.Error(err.Error())
     }
 
-    jsonsAsBytes,err := json.Marshal(UserInfo.UserID)
-    if err != nil{
-        return shim.Error(err.Error())
-    }
-
-
-    return shim.Success(jsonsAsBytes)
+    return shim.Success(nil)
 }
-
-
-
-
 
 
 func(a *UserChainCode) getUserInfo (stub shim.ChaincodeStubInterface,args []string) pb.Response{

@@ -5,11 +5,11 @@ var app = angular.module('application', []);
 
 // Angular Controller
 app.controller('appController', function($scope, appFactory){
-
 	$("#success_holder").hide();
 	$("#success_create").hide();
 	$("#error_holder").hide();
 	$("#error_query").hide();
+	
 	$scope.querySource = function(){
 		var id = $scope.query_id;
 		appFactory.querySource(id, function(data){
@@ -66,7 +66,7 @@ app.controller('appController', function($scope, appFactory){
         var psw = $scope.psw;
         var uid = hex_hmac_md5(usrname,psw);
         if(uid!=id){
-        	alert("uid:"+uid);
+        	// alert("uid:"+uid);
             alert("The password or username is not correct");
             window.location.href("/login");
 		}else{

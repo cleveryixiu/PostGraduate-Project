@@ -97,22 +97,35 @@
 			                        	<input type="text" name="field1" placeholder="Username..." class="form-first-name form-control" id="username">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-last-name">UserType</label>
-			                        	<select name="Usertype" name="field1" id="usertype">
+                                        <label class="sr-only" for="form-last-name">UserType</label>
+                                        <input  type="hidden" name="field1" disabled="disabled" placeholder="Usertype..." class="form-email form-control" id="usertype_input">
+			                        	<select name="Usertype" name="field1" id="usertype"  class="form-email form-control" onchange="getUsertype(this.id)">
+                                            <option value="" disabled selected style="display: none;">Usertype...</option>
                                             <option value="Farmer">Farmer</option>
                                             <option value="Manufacture">Manufacture</option>
                                             <option value="Transporter">Transporter</option>
                                             <option value="Retailer">Retailer</option>
                                             <option value="Warehouse">Warehouse</option>
                                         </select>
+                                        <script>
+                                            function getUsertype(id) {
+                                                var id = document.getElementById(id)
+                                                var i = id.selectedIndex
+                                                var text = id.options[i].text
+                                                var value = id.options[i].value
+
+                                                document.getElementById("usertype_input").disabled=false
+                                                document.getElementById("usertype_input").value = text
+                                            }
+                                        </script>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-email">Password</label>
-			                        	<input type="text" name="field1" placeholder="Password..." class="form-email form-control" id="password">
+			                        	<input type="password" name="field1" placeholder="Password..." class="form-email form-control" id="password">
                                     </div>
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-email">Confirm Password</label>
-			                        	<input type="text" name="field1" placeholder="Confirm Password..." class="form-email form-control" id="repsw">
+			                        	<input type="password" name="field1" placeholder="Confirm Password..." class="form-email form-control" id="repsw">
                                     </div>
                                     <div class="form-group">
 			                        	<label class="sr-only" for="form-email">UserId</label>

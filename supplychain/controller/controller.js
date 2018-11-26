@@ -195,7 +195,6 @@ return{
 		res.redirect('/index')
 	},
 
-
     re_user: function(req, res, function_name){
         var fabric_client = new Fabric_Client();
 
@@ -420,7 +419,6 @@ return{
 		    res.send("Could not find food")
 		});
 	},
-
 
     get_user: function(req, res, function_name){
         var fabric_client = new Fabric_Client();
