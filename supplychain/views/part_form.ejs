@@ -1,169 +1,148 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Publish Ingredient</title>
-<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
-<style type="text/css">
-body{
-	background-image: url("css/business_search.jpg");
-	background-size: cover;
-}
-.form-style-10{
-	max-width:450px;
-	padding:30px;
-	margin:40px auto;
-	background: #FFF;
-	border-radius: 10px;
-	-webkit-border-radius:10px;
-	-moz-border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-}
-.form-style-10 .inner-wrap{
-	padding: 30px;
-	background: #2A88AD;
-	border-radius: 6px;
-	margin-bottom: 15px;
-}
-.form-style-10 h1{
-	background: #2A88AD;
-	padding: 20px 30px 15px 30px;
-	margin: -30px -30px 30px -30px;
-	border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	-moz-border-radius: 10px 10px 0 0;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-}
-.form-style-10 h1 > span{
-	display: block;
-	margin-top: 2px;
-	font: 13px Arial, Helvetica, sans-serif;
-}
-.form-style-10 label{
-	display: block;
-	font: bold 15px Arial, Helvetica;
-	color: #fff;
-	margin-bottom: 15px;
-}
-.form-style-10 input[type="text"],
-.form-style-10 input[type="date"],
-.form-style-10 input[type="datetime"],
-.form-style-10 input[type="email"],
-.form-style-10 input[type="number"],
-.form-style-10 input[type="search"],
-.form-style-10 input[type="time"],
-.form-style-10 input[type="url"],
-.form-style-10 input[type="password"],
-.form-style-10 textarea,
-.form-style-10 select {
-	display: block;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	width: 100%;
-	padding: 8px;
-	border-radius: 6px;
-	-webkit-border-radius:6px;
-	-moz-border-radius:6px;
-	border: 2px solid #fff;
-	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-}
-
-.form-style-10 .section{
-	font: normal 20px 'Bitter', serif;
-	color: #2A88AD;
-	margin-bottom: 5px;
-}
-
-.form-style-10 .section span {
-	background: #2A88AD;
-	padding: 5px 10px 5px 10px;
-	position: absolute;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border: 4px solid #fff;
-	font-size: 14px;
-	margin-left: -45px;
-	color: #fff;
-	margin-top: -3px;
-}
-
-.form-style-10 input[type="button"], 
-.form-style-10 input[type="submit"]{
-	background: #2A88AD;
-	padding: 8px 20px 8px 20px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-	font-size: 15px;
-}
-.form-style-10 input[type="button"]:hover, 
-.form-style-10 input[type="submit"]:hover{
-	background: #2A6881;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Food SupplyChain System</title>
+  <link rel="stylesheet" href="/css/index2.css">
 </head>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">Food Supply chain</div>
+    <ul class="layui-nav layui-layout-left">
+     
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          user
+        </a>
+        
+      </li>
+      <li class="layui-nav-item"><a href="">logout</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a  href="index">Main Page</a></li>
 
-<body>
+        <li class="layui-nav-item">
+          <a  href="publish_item">Publish Item</a>
+        </li>
 
-<div class="form-style-10">
-<h1>Add Ingredients</h1>
-<form method="post" action="/re_part_form" novalidate>
-    <div class="section"><span>1</span>ItemId</div>
-    <div class="inner-wrap">
-	<label><input type="text" name="field1" /></label>
+        <li class="layui-nav-item">
+          <a class="layui-this" href="publish_ingredient">Publish Ingredients</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="publish_transport">Transport Item</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_item">Query Item</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_ingredient">Query Ingredients</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_transport">Query Transport</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_block">Query Block</a>
+        </li>
+
+      </ul>
     </div>
-    <div class="section"><span>2</span>Ingredient Information</div>
-    <div class="inner-wrap">
-	<label>IngredientID <input type="text" name="field1" /></label>
-        <label>IngredientName <input type="text" name="field1" /></label>
-    </div>
-    <div class="section"><span>3</span>Ingredient Information</div>
-    <div class="inner-wrap">
-	<label>IngredientID <input type="text" name="field1" /></label>
-        <label>IngredientName <input type="text" name="field1" /></label>
-    </div>
-    <div class="section"><span>4</span>Ingredient Information</div>
-    <div class="inner-wrap">
-	<label>IngredientID <input type="text" name="field1" /></label>
-        <label>IngredientName <input type="text" name="field1" /></label>
-    </div>
-    <div class="section"><span>5</span>Ingredient Information</div>
-    <div class="inner-wrap">
-	<label>IngredientID <input type="text" name="field1" /></label>
-        <label>IngredientName <input type="text" name="field1" /></label>
-    </div>
-    <div class="section"><span>6</span>Ingredient Information</div>
-    <div class="inner-wrap">
-	<label>IngredientID <input type="text" name="field1" /></label>
-        <label>IngredientName <input type="text" name="field1" /></label>
-    </div>
-    <div class="button-section">
-     <input type="submit" name="submit" />
-    </div>
-</form>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    
+    <div style="padding: 15px;">
+            <fieldset class="layui-elem-field">
+                <legend>Ingredient Information</legend>
+                <div class="layui-field-box">
+                    
+                    <form class="layui-form" action="/re_part_form" method="post" novalidate>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">ItemtID</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientID1</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientName1</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientID2</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+    
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientName2</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientID3</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required  lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+        
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">IngredientName3</label>
+                            <div class="layui-input-inline">
+                            <input type="text" name="field1" required lay-verify="required"  autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    
+                        
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                            <button class="layui-btn" lay-submit lay-filter="formDemo">Submit</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </fieldset>
+        </div>
+
+    
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+  
+  </div>
 </div>
-
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript" src="/js/sys_config.js"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@ module.exports = function(app) {
 	app.get('/index', function(req, res) {
 		tuna.index(req, res);
 	});
-	app.get('/search', function(req, res) {
+	app.get('/query_item', function(req, res) {
 		tuna.search_html(req, res);
 	});
     app.get('/login', function(req, res) {
@@ -20,22 +20,22 @@ module.exports = function(app) {
     app.get('/register', function(req, res) {
         tuna.register_html(req, res);
     });
-	app.get('/part_search', function(req, res) {
+	app.get('/query_ingredient', function(req, res) {
 		tuna.part_search(req, res);
 	});
-	app.get('/business_search', function(req, res) {
+	app.get('/query_transport', function(req, res) {
 		tuna.business_search(req, res);
 	});
-	app.get('/form', function(req, res) {
+	app.get('/publish_item', function(req, res) {
 		tuna.form_(req, res);
 	});
-	app.get('/part_form', function(req, res) {
+	app.get('/publish_ingredient', function(req, res) {
 		tuna.part_form(req, res);
 	});
-    app.get('/block', function(req, res) {
+    app.get('/query_block', function(req, res) {
         tuna.block_html(req, res);
     });
-	app.get('/transit_form', function(req, res) {
+	app.get('/publish_transport', function(req, res) {
 		tuna.transit_form(req, res);
 	});
 	app.post('/re_form', function(req, res) {

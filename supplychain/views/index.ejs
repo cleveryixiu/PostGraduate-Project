@@ -1,40 +1,176 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel="stylesheet" type="text/css" href="/css/index.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>Food SupplyChain System</title>
+  <link rel="stylesheet" href="/css/index2.css">
 </head>
-<% if (messages.success) { %>
-	<div class="flash flash-success"><%= messages.success %></div>
-<% } %>
-<div class="hand">
-	<div class = "card suitdiamonds" onclick="window.location='/search';">
-		<img src="/images/user-food.jpg" class="image-icon">
-		<p>Search  Item</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/part_search';">
-		<img src="/images/part_of_food.jpg" class="image-icon">
-		<p>Search Ingredient</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/business_search';">
-		<img src="/images/transport.jpeg" class="image-icon">
-		<p>Search Transport</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/block';">
-		<img src="/images/block.jpg" class="image-icon">
-		<p>Search Block</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/form';">
-		<img src="/images/submit.png" class="image-icon">
-		<p>Publish Item</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/part_form';">
-		<img src="/images/batching.jpg" class="image-icon">
-		<p>Publish Ingredients</p>
-	</div>
-	<div class = "card suitdiamonds" onclick="window.location='/transit_form';">
-		<img src="/images/transit.png" class="image-icon">
-		<p>Transport Item</p>
-	</div>
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+  <div class="layui-header">
+    <div class="layui-logo">Food Supply chain</div>
+    <ul class="layui-nav layui-layout-left">
+     
+    </ul>
+    <ul class="layui-nav layui-layout-right">
+      <li class="layui-nav-item">
+        <a href="javascript:;">
+          <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+          user
+        </a>
+        
+      </li>
+      <li class="layui-nav-item"><a href="">logout</a></li>
+    </ul>
+  </div>
+  
+  <div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+      <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+      <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+        <li class="layui-nav-item"><a class="layui-this" href="index">Main Page</a></li>
+
+        <li class="layui-nav-item">
+          <a class="" href="publish_item">Publish Item</a>
+        </li>
+
+        <li class="layui-nav-item">
+          <a href="publish_ingredient">Publish Ingredients</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="publish_transport">Transport Item</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_item">Query Item</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_ingredient">Query Ingredients</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_transport">Query Transport</a>
+        </li>
+
+        <li class="layui-nav-item">
+            <a href="query_block">Query Block</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+  
+  <div class="layui-body">
+    <!-- 内容主体区域 -->
+    <div style="padding: 15px;">
+        <fieldset class="layui-elem-field">
+            <legend>控制台-系统信息</legend>
+            <div class="layui-field-box">
+                <table class="layui-table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="200">
+                        <col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                        <th>昵称</th>
+                        <th>加入时间</th>
+                        <th>签名</th>
+                        </tr> 
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <td>贤心</td>
+                        <td>2016-11-29</td>
+                        <td>人生就像是一场修行</td>
+                        </tr>
+                        <tr>
+                        <td>许闲心</td>
+                        <td>2016-11-28</td>
+                        <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                        </tr>
+                        <tr>
+                        <td>sentsin</td>
+                        <td>2016-11-27</td>
+                        <td> Life is either a daring adventure or nothing.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+
+        <fieldset class="layui-elem-field">
+          <legend>控制台-最新公告</legend>
+          <div class="layui-field-box">
+              <table class="layui-table">
+                  <colgroup>
+                      <col width="150">
+                      <col width="200">
+                      <col>
+                  </colgroup>
+                  <thead>
+                      <tr>
+                      <th>昵称</th>
+                      <th>加入时间</th>
+                      <th>签名</th>
+                      </tr> 
+                  </thead>
+                  <tbody>
+                      <tr>
+                      <td>贤心</td>
+                      <td>2016-11-29</td>
+                      <td>人生就像是一场修行</td>
+                      </tr>
+                      <tr>
+                      <td>许闲心</td>
+                      <td>2016-11-28</td>
+                      <td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+                      </tr>
+                      <tr>
+                      <td>sentsin</td>
+                      <td>2016-11-27</td>
+                      <td> Life is either a daring adventure or nothing.</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+    </fieldset>
+
+      <fieldset class="layui-elem-field">
+            <legend>控制台-最新公告</legend>
+            <div class="layui-field-box">
+                    <form method="post" action="/re_form" novalidate>
+                        <div class="section">Item Information</div>
+                        <div class="inner-wrap">
+                            <label>ItemId <input type="text" name="field1" /></label>
+                            <label>ItemName <input type="text" name="field1" /></label>
+                            <label>ItemSpec <input type="text" name="field1" /></label>
+                            <label>Production Date <input type="text" name="field1" /></label>
+                            <label>Expiration Date <input type="text" name="field1" /></label>
+                            <label>Batch Number <input type="text" name="field1" /></label>
+                            <label>Item Manufacturer <input type="text" name="field1" /></label>
+                            <label>Item Location<input type="text" name="field1" /></label>
+                        </div>
+                        <div class="button-section">
+                         <input type="submit" name="submit" />
+                        </div>
+                    </form>
+            </div>
+      </fieldset>
+    </div>
+  </div>
+  
+  <div class="layui-footer">
+    <!-- 底部固定区域 -->
+    
+  </div>
 </div>
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/layui.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+</body>
 </html>
