@@ -1,237 +1,214 @@
-<!DOCTYPE HTML>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Signup</title>
-<link href='http://fonts.googleapis.com/css?family=Bitter' rel='stylesheet' type='text/css'>
+<!DOCTYPE html>
+<html lang="en">
 
-<style type="text/css">
-body{
-	background-image: url("images/login2.jpg");
-	background-size: cover;
-}
-.form-style-10{
-	max-width:450px;
-	padding:30px;
-	margin:30px auto;
-	background: #FFF;
-	border-radius: 10px;
-	-webkit-border-radius:10px;
-	-moz-border-radius: 10px;
-	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-moz-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-	-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.13);
-}
-.form-style-10 .inner-wrap{
-	padding: 20px;
-	background: #2A88AD;
-	border-radius: 6px;
-	margin-bottom: 15px;
-}
-.form-style-10 h1{
-	background: #2A88AD;
-	padding: 20px 30px 15px 30px;
-	margin: -30px -30px 30px -30px;
-	border-radius: 10px 10px 0 0;
-	-webkit-border-radius: 10px 10px 0 0;
-	-moz-border-radius: 10px 10px 0 0;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-}
-.form-style-10 h1 > span{
-	display: block;
-	margin-top: 2px;
-	font: 13px Arial, Helvetica, sans-serif;
-}
-.form-style-10 label{
-	display: block;
-	font: bold 15px Arial, Helvetica;
-	color: #fff;
-	margin-bottom: 15px;
-}
-.form-style-10 input[type="text"],
-.form-style-10 input[type="date"],
-.form-style-10 input[type="datetime"],
-.form-style-10 input[type="email"],
-.form-style-10 input[type="number"],
-.form-style-10 input[type="search"],
-.form-style-10 input[type="time"],
-.form-style-10 input[type="url"],
-.form-style-10 input[type="password"],
-.form-style-10 textarea,
-.form-style-10 select {
-	display: block;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	width: 100%;
-	padding: 8px;
-	border-radius: 6px;
-	-webkit-border-radius:6px;
-	-moz-border-radius:6px;
-	border: 2px solid #fff;
-	box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-moz-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-	-webkit-box-shadow: inset 0px 1px 1px rgba(0, 0, 0, 0.33);
-}
+    <head>
 
-.form-style-10 .section{
-	font: normal 20px 'Bitter', serif;
-	color: #2A88AD;
-	margin-bottom: 5px;
-}
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Signup</title>
 
-.form-style-10 .section span {
-	background: #2A88AD;
-	padding: 5px 10px 5px 10px;
-	position: absolute;
-	border-radius: 50%;
-	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
-	border: 4px solid #fff;
-	font-size: 14px;
-	margin-left: -45px;
-	color: #fff;
-	margin-top: -3px;
-}
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/form-elements.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
-.form-style-10 input[type="button"], 
-.form-style-10 input[type="submit"]{
-	background: #2A88AD;
-	padding: 8px 20px 8px 20px;
-	border-radius: 5px;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	color: #fff;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.12);
-	font: normal 30px 'Bitter', serif;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
-	border: 1px solid #257C9E;
-	font-size: 15px;
-}
-.form-style-10 input[type="button"]:hover, 
-.form-style-10 input[type="submit"]:hover{
-	background: #2A6881;
-	-moz-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	-webkit-box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-	box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.28);
-}
-</style>
-<script type="text/javascript" src="/js/md5.js"></script>
-<script type="text/javascript">
-    function generate(){
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
-        var username = document.getElementById('username');
-        var password = document.getElementById('password');
-        var userid = document.getElementById('userid');
-        if(password==""){
-            useid.value="";
-        }else{
-            userid.value =hex_hmac_md5(username.value, password.value);
-        }
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
-        alert("Please save the unique userId:"+userid.value);
-        return true;
-    }
+    </head>
 
-    function checkInput(){
+    <body>
 
-        var username = document.getElementById('username');
-        var password = document.getElementById('password');
-        var repsw = document.getElementById('repsw');
-        var userid = document.getElementById('userid');
-        var check1=false;
-        var check2=false;
-        var check3=false;
-        var check4=false;
+		<!-- Top menu -->
+		<nav class="navbar navbar-inverse navbar-no-bg" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/register"></a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+						<li>
+							<span class="li-text">
+								Welcome to our
+							</span> 
+								food supplychain system 
+							</span> 
+							<span class="li-social">
+								<a href="#"><i class="fa fa-facebook"></i></a> 
+								<a href="#"><i class="fa fa-twitter"></i></a> 
+								<a href="#"><i class="fa fa-envelope"></i></a> 
+								<a href="#"><i class="fa fa-skype"></i></a>
+							</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 
-        if(username.value==""){
-            alert("Please input the username");
-        }else{
-            check1=true;
-        }
-        if(password.value==""){
-            alert("Please input the password");
-        }else{
-            check2=true;
-        }
-        if(password.value!=repsw.value){
-            alert("Entered passwords differ from the another! ");
-        }else{
-            check4=true;
-        }
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            
+                        </div>
+                    </div>
+                    <div class="row">
+                    	<div class="col-sm-6 phone">
+                    		
+                    	</div>
+                        <div class="col-sm-5 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Register to our App</h3>
+                            		<p>Fill in the form below to get instant access:</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<i class="fa fa-pencil"></i>
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+			                    <form  method="post" action="/re_user" onsubmit="return checkInput()" novalidate>
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-first-name">Username</label>
+			                        	<input type="text" name="field1" placeholder="Username..." class="form-first-name form-control" id="username">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-last-name">UserType</label>
+			                        	<select name="Usertype" name="field1" id="usertype">
+                                            <option value="Farmer">Farmer</option>
+                                            <option value="Manufacture">Manufacture</option>
+                                            <option value="Transporter">Transporter</option>
+                                            <option value="Retailer">Retailer</option>
+                                            <option value="Warehouse">Warehouse</option>
+                                        </select>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-email">Password</label>
+			                        	<input type="text" name="field1" placeholder="Password..." class="form-email form-control" id="password">
+                                    </div>
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-email">Confirm Password</label>
+			                        	<input type="text" name="field1" placeholder="Confirm Password..." class="form-email form-control" id="repsw">
+                                    </div>
+                                    <div class="form-group">
+			                        	<label class="sr-only" for="form-email">UserId</label>
+                                        <input type="text" name="field1" placeholder="UserId..." class="form-email form-control" id="userid">
+                                        <input type=button class="btn" onclick="generate()" value="Generate ID" style="margin-top:10px;">
+                                    </div>
+                                    <!-- <input type=button class="btn" onclick="generate()" value="Generate ID"> -->
+			                        <button type="submit" class="btn">Sign me up!</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
-        if(userid.value==""){
-            alert("Please generate userId first");
-        }else{
-            check3=true;
-        }
 
-        if(check1&&check2&&check3&&check4){
-            return true;
-        }else{
-           window.open('/register');
-        }
-    }
+        <!-- Javascript -->
+        <script src="assets/js/jquery-1.11.1.min.js"></script>
+        <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.backstretch.min.js"></script>
+        <script src="assets/js/retina-1.1.0.min.js"></script>
+        <script src="assets/js/scripts.js"></script>
 
-    window.onload=function() {
-        var usertype = document.getElementById('usertype');
-        var username = document.getElementById('username');
-        var userid = document.getElementById('userid');
-        usertype.value="";
-        username.value="";
-        userid.value="";
-    }
-</script>
-</head>
+        <script type="text/javascript" src="/js/md5.js"></script>
+        <script type="text/javascript">
+            function generate(){
 
-<body>
+                var username = document.getElementById('username');
+                var password = document.getElementById('password');
+                var userid = document.getElementById('userid');
+                if(password==""){
+                    useid.value="";
+                }else{
+                    userid.value =hex_hmac_md5(username.value, password.value);
+                }
 
-<div class="form-style-10">
-<h1>Signup</h1>
-<form method="post" action="/re_user" onsubmit="return checkInput()" novalidate>
-    <div class="section">Usertype</div>
-    <div class="inner-wrap">
-	<!-- <label><input type="text" id="usertype" name="field1" /></label> -->
-	<label>
-	<select name="cars">
-		<option value="Farmer">Farmer</option>
-		<option value="Manufacture">Manufacture</option>
-		<option value="Transporter">Transporter</option>
-		<option value="Retailer">Retailer</option>
-		<option value="Warehouse">Warehouse</option>
-	  </select>
-	  </label>
-    </div>
-    <div class="section">Username</div>
-    <div class="inner-wrap">
-        <label><input type="text" id="username" name="field1" /></label>
-    </div>
-    <div class="section">Password</div>
-    <div class="inner-wrap">
-        <label> <input type="password" id="password" name="field1" /></label>
-    </div>
-    <div class="section">Confirm Password</div>
-    <div class="inner-wrap">
-        <label><input type="password" id="repsw" name="field1" /></label>
-    </div>
-    <div class="section">UserId</div>
-    <div class="inner-wrap">
-        <label> <input type="text" id="userid" name="field1" /></label>
-    </div>
-    <div class="button-section">
-        <input type=button onclick="generate()" value="Generate ID">
-     <input type="submit" value="Signup" />
-    </div>
-</form>
-</div>
+                alert("Please save the unique userId:"+userid.value);
+                return true;
+            }
 
-</body>
+            function checkInput(){
+
+                var username = document.getElementById('username');
+                var password = document.getElementById('password');
+                var repsw = document.getElementById('repsw');
+                var userid = document.getElementById('userid');
+                var check1=false;
+                var check2=false;
+                var check3=false;
+                var check4=false;
+
+                if(username.value==""){
+                    alert("Please input the username");
+                }else{
+                    check1=true;
+                }
+                if(password.value==""){
+                    alert("Please input the password");
+                }else{
+                    check2=true;
+                }
+                if(password.value!=repsw.value){
+                    alert("Entered passwords differ from the another! ");
+                }else{
+                    check4=true;
+                }
+
+                if(userid.value==""){
+                    alert("Please generate userId first");
+                }else{
+                    check3=true;
+                }
+
+                if(check1&&check2&&check3&&check4){
+                    return true;
+                }else{
+                window.open('/register');
+                }
+            }
+
+            window.onload=function() {
+                var usertype = document.getElementById('usertype');
+                var username = document.getElementById('username');
+                var userid = document.getElementById('userid');
+                usertype.value="";
+                username.value="";
+                userid.value="";
+            }
+        </script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
 </html>
