@@ -1,113 +1,35 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Food SupplyChain System</title>
-    <link rel="stylesheet" href="/css/index2.css">
-    <link rel="stylesheet" type="text/css" href="css/detail.css" />
-	<link rel="stylesheet" type="text/css" href="css/search.css" />
-    <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
-</head>
-
-<body class="layui-layout-body" ng-app="application" ng-controller="appController">
-    <div class="layui-layout layui-layout-admin">
-        <div class="layui-header">
-            <div class="layui-logo">Food Supply chain</div>
-            <ul class="layui-nav layui-layout-left">
-
-            </ul>
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <a href="javascript:;">
-                        <img src="http://t.cn/RCzsdCq" class="layui-nav-img"> user
-                    </a>
-
-                </li>
-                <li class="layui-nav-item">
-                    <a href="">logout</a>
-                </li>
-            </ul>
-        </div>
-
-        <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
-                    <li class="layui-nav-item">
-                        <a href="index">Main Page</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="publish_item">Publish Item</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="publish_ingredient">Publish Ingredients</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="publish_transport">Transport Item</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a  href="query_item">Query Item</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a  href="query_ingredient">Query Ingredients</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a class="layui-this" href="query_transport">Query Transport</a>
-                    </li>
-
-                    <li class="layui-nav-item">
-                        <a href="query_block">Query Block</a>
-                    </li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div class="layui-body">
-            <!-- 内容主体区域 -->
-            <div class="form-wrapper">
-                <input type="text" id="search" placeholder="ItemId" ng-model="query_id" required>
-                <input type="submit" value="Search" id="submit" ng-click="queryTransit()">
-            </div>
-            <table cellspacing="0" id="transit_source">
-                <tr>					
-                    <th>Sender</th>
-                    <th>Receiver</th>
-                    <th>Departure Time</th>
-                    <th>Arrival Time</th>
-                    <th>Transport Mode</th>
-                    <th>Logistics Company</th>			
-                </tr>
-                <tr ng-repeat="transit in transit_source">
-                    <td>{{transit.LogSender}}</td>
-                    <td>{{transit.LogReceiver}}</td>
-                    <td>{{transit.LogDepartureTm}}</td>
-                    <td>{{transit.LogArrivalTm}}</td>
-                    <td>{{transit.LogMOT}}</td>
-                    <td>{{transit.LogCopID}}</td>
-                    </tr>
-            </table>
-        </div>
-
-        <div class="layui-footer">
-            <!-- 底部固定区域 -->
-
-        </div>
-    </div>
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/layui.js"></script>
-    <script type="text/javascript" src="/js/sys_config.js"></script>
-    <script type="text/javascript" src="/js/app.js"> </script>
-    <script type="text/javascript" src="/js/dw.js"> </script>
-</body>
-
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<link rel="stylesheet" type="text/css" href="css/detail.css" />
+		<link rel="stylesheet" type="text/css" href="css/business_search.css" />
+		<script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+		<script src="https://ajax.lug.ustc.edu.cn/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	</head>
+	<body ng-app="application" ng-controller="appController">
+		<div class="form-wrapper">
+			<input type="text" id="search" placeholder="FoodId" ng-model="query_id" required>
+			<input type="submit" value="Search" id="submit" ng-click="queryTransit()">
+		</div>
+		<table cellspacing="0" id="transit_source">
+			<tr>					
+				<th>Sender</th>
+				<th>Receiver</th>
+				<th>Departure Time</th>
+				<th>Arrival Time</th>
+				<th>Transport Mode</th>
+				<th>Logistics Company</th>			
+			</tr>
+			<tr ng-repeat="transit in transit_source">
+				<td>{{transit.LogSender}}</td>
+				<td>{{transit.LogReceiver}}</td>
+				<td>{{transit.LogDepartureTm}}</td>
+				<td>{{transit.LogArrivalTm}}</td>
+				<td>{{transit.LogMOT}}</td>
+				<td>{{transit.LogCopID}}</td>
+        		</tr>
+		</table>
+	</body>
+	<script type="text/javascript" src="/js/app.js"> </script>
 </html>

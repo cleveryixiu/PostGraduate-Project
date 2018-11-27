@@ -45,6 +45,7 @@ return{
     register_html: function(req, res) {
         res.render('register_user')
     },
+    
 	re_form: function(req, res, function_name){
 		var fabric_client = new Fabric_Client();
 
