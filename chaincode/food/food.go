@@ -199,6 +199,8 @@ func(a *FoodChainCode) getItemInfo (stub shim.ChaincodeStubInterface,args []stri
             ItemAllinfo.ItemProInfo = ItemInfos.ItemProInfo
         }else if ItemInfos.ItemIngInfo != nil{
             ItemAllinfo.ItemIngInfo = ItemInfos.ItemIngInfo
+        }else if ItemInfos.ItemLogInfo.LogReceiver !=""{
+            ItemAllinfo.ItemLogInfo = append(ItemAllinfo.ItemLogInfo,ItemInfos.ItemLogInfo)
         }
 
     }
@@ -301,6 +303,9 @@ func(a *FoodChainCode) getLogInfo (stub shim.ChaincodeStubInterface,args []strin
             return shim.Error(err.Error())
         }
         json.Unmarshal(response.Value,&ItemInfos)
+        if ItemInfos.ItemLogInfo.LogReceiver != ""{
+            LogInfos = append(LogInfos,ItemInfos.ItemLogInfo)
+        }
         
     }
     jsonsAsBytes,err := json.Marshal(LogInfos)
@@ -332,6 +337,9 @@ func(a *FoodChainCode) getLogInfo_l(stub shim.ChaincodeStubInterface,args []stri
             return shim.Error(err.Error())
         }
         json.Unmarshal(response.Value,&ItemInfos)
+        if ItemInfos.ItemLogInfo.LogReceiver != ""{
+            Loginfo = ItemInfos.ItemLogInfo
+        }
         
     }
     jsonsAsBytes,err := json.Marshal(Loginfo)
