@@ -23,7 +23,7 @@ th {
 	height: 40px;
 }
 		
-td { background: #FAFAFA; text-align: center; }
+td { background: #FAFAFA; text-align: center; word-break: break-all;}
 
 /* Zebra Stripe Rows */
 		
@@ -37,7 +37,7 @@ tr td:first-child, tr th:first-child {
 	font-size: 14px;
 	text-align: right;
 	padding-right: 10px;
-	width: 80px; 
+	width: 120px; 
 }
 
 /* Add border-radius to specific cells! */
@@ -47,4 +47,25 @@ tr:first-child th:nth-child(2) {
 
 tr:first-child th:last-child { 
   border-radius: 0 5px 0 0; 
+}
+
+.refresh #submit {
+  float: right;    
+  border: 1px solid #00748f;
+  height: 42px;
+  width: 100px;
+  padding: 0;
+  cursor: pointer;
+  font: bold 15px Arial, Helvetica;
+  color: #fafafa;
+  text-transform: uppercase;    
+  background-color: 	#32CD32;
+  background-image: linear-gradient(top, #31b2c3, 	#32CD32);
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;      
+  text-shadow: 0 1px 0 rgba(0, 0 ,0, .3);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
+-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3) inset, 0 1px 0 #fff;
 }

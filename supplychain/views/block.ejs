@@ -7,9 +7,31 @@
     <title>Food SupplyChain System</title>
     <link rel="stylesheet" href="/css/index2.css">
     <link rel="stylesheet" type="text/css" href="css/detail.css" />
-	<link rel="stylesheet" type="text/css" href="css/search.css" />
+    <link rel="stylesheet" type="text/css" href="css/search.css" />
     <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 
 <body class="layui-layout-body" ng-app="application" ng-controller="appController">
@@ -53,11 +75,11 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a  href="query_item">Query Item</a>
+                        <a href="query_item">Query Item</a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a  href="query_ingredient">Query Ingredients</a>
+                        <a href="query_ingredient">Query Ingredients</a>
                     </li>
 
                     <li class="layui-nav-item">
@@ -81,12 +103,18 @@
             <table cellspacing="0" id="part_source">
                 <tr>
                     <th>BlockID</th>
+                    <th>Previous_hash</th>
+                    <th>Data_hash</th>
                     <th>TransactionID</th>
+                    <th>Timestamp</th>
                 </tr>
                 <tr>
-                    <td>{{id}}</td>
-                    <td>{{result}}</td>
-                 </tr>
+                    <td>{{result.split(" ")[0]}}</td>
+                    <td>{{result.split(" ")[1]}}</td>
+                    <td>{{result.split(" ")[2]}}</td>
+                    <td>{{result.split(" ")[3]}}</td>
+                    <td>{{result.split(" ")[4]}}</td>
+                </tr>
             </table>
         </div>
 

@@ -7,12 +7,33 @@
     <title>Food SupplyChain System</title>
     <link rel="stylesheet" href="/css/index2.css">
     <link rel="stylesheet" type="text/css" href="css/detail.css" />
-	<link rel="stylesheet" type="text/css" href="css/search.css" />
+    <link rel="stylesheet" type="text/css" href="css/search.css" />
     <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://ajax.lug.ustc.edu.cn/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
 </head>
 
-<body class="layui-layout-body" ng-app="application" ng-controller="appController">
+<body class="layui-layout-body" ng-app="application" ng-controller="appController" >
     <div class="layui-layout layui-layout-admin">
         <div class="layui-header">
             <div class="layui-logo">Food Supply chain</div>
@@ -53,11 +74,11 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a  href="query_item">Query Item</a>
+                        <a href="query_item">Query Item</a>
                     </li>
 
                     <li class="layui-nav-item">
-                        <a  href="query_ingredient">Query Ingredients</a>
+                        <a href="query_ingredient">Query Ingredients</a>
                     </li>
 
                     <li class="layui-nav-item">
@@ -65,7 +86,7 @@
                     </li>
 
                     <li class="layui-nav-item">
-                        <a  href="query_block">Query Block</a>
+                        <a href="query_block">Query Block</a>
                     </li>
 
                 </ul>
@@ -74,20 +95,27 @@
 
         <div class="layui-body">
             <!-- 内容主体区域 -->
-            <div class="form-wrapper">
-                <input type="text" id="search" placeholder="BlockID" ng-model="query_id" required>
-                <input type="submit" value="Search" id="submit" ng-click="queryBlock()">
-            </div>
-            <table cellspacing="0" id="part_source">
+            <table id="block_source">
                 <tr>
                     <th>BlockID</th>
+                    <th>Previous_hash</th>
+                    <th>Data_hash</th>
                     <th>TransactionID</th>
+                    <th>Timestamp</th>
                 </tr>
-                <tr>
-                    <td>{{id}}</td>
-                    <td>{{result}}</td>
-                 </tr>
+                <tr ng-repeat="block in block_source">
+                    <td>{{block.split(" ")[0]}}</td>
+                    <td>{{block.split(" ")[1]}}</td>
+                    <td>{{block.split(" ")[2]}}</td>
+                    <td>{{block.split(" ")[3]}}</td>
+                    <td>{{block.split(" ")[4]}}</td>
+                </tr>
             </table>
+
+            <div class="refresh">
+                <input type="submit" value="Refresh" id="submit" style="border-radius: 3px; width:250px;height:50px;background:#00CC00;margin-right: 650px;margin-bottom:400px" ng-click="queryAllBlock()">
+            </div>
+       
         </div>
 
         <div class="layui-footer">
@@ -100,6 +128,7 @@
     <script type="text/javascript" src="/js/sys_config.js"></script>
     <script type="text/javascript" src="/js/app.js"> </script>
     <script type="text/javascript" src="/js/dw.js"> </script>
+
 </body>
 
 </html>
