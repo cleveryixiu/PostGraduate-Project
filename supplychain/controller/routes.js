@@ -3,7 +3,7 @@ var tuna = require('./controller.js');
 
 module.exports = function(app) {
 	app.get('/', function(req, res) {
-		tuna.login_html2(req, res);
+		tuna.login_html(req, res);
 	});
 	app.get('/index', function(req, res) {
 		tuna.index(req, res);
@@ -11,12 +11,6 @@ module.exports = function(app) {
 	app.get('/query_item', function(req, res) {
 		tuna.search_html(req, res);
 	});
-    app.get('/login', function(req, res) {
-        tuna.login_html(req, res);
-	});
-	app.get('/login2', function(req, res) {
-        tuna.login_html2(req, res);
-    });
     app.get('/register', function(req, res) {
         tuna.register_html(req, res);
     });

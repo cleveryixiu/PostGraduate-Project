@@ -63,18 +63,7 @@ app.controller('appController', function ($scope, appFactory, $http) {
 	}
 
 	$scope.queryAllBlock = function () {
-		// appFactory.queryAllBlock(function (data) {
-		// 	$scope.id = 2;
-		// 	$scope.result = data;
-		// 	// alert("--------------------------")
-		// 	// alert("id is: " + $scope.id)
-		// 	// alert("data:  " + $scope.result)
-		// });
-
-		// alert("hello.......")
 		var result = [];
-
-		// alert("hello")
 
 		$http.get('/block/1').success(function (output) {
 			// alert("result: " + output)

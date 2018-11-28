@@ -39,9 +39,6 @@ module.exports = (function () {
         login_html: function (req, res) {
             res.render('login')
         },
-        login_html2: function (req, res) {
-            res.render('login2')
-        },
         register_html: function (req, res) {
             res.render('register_user')
         },
