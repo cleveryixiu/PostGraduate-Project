@@ -115,9 +115,6 @@ func(a *UserChainCode) getUserInfo (stub shim.ChaincodeStubInterface,args []stri
     return shim.Success(jsonsAsBytes)
 }
 
-
-
-
 func main(){
      err := shim.Start(new(UserChainCode))
      if err != nil {

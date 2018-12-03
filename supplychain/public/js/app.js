@@ -44,6 +44,7 @@ app.controller('appController', function ($scope, appFactory, $http) {
 
 		appFactory.queryTransit(id, function (data) {
 			$scope.transit_source = data;
+			alert("data: " + data);
 			if ($scope.query_tuna == "Could not locate tuna") {
 				console.log()
 				$("#error_query").show();
@@ -158,18 +159,15 @@ app.controller('appController', function ($scope, appFactory, $http) {
 			// alert("uid:"+uid);
 			alert("The password or username is not correct");
 			window.location.href("/login");
-		} else {
-			appFactory.queryUser(id, function (data) {
-				$scope.part_source = data;
-				if ($scope.query_tuna == "Could not locate tuna") {
-					console.log()
-					$("#error_query").show();
-				} else {
-					$("#error_query").hide();
-					window.location.href = "/index";
-				}
-			});
 		}
+
+		$http.get('/user/' + id).success(function (output) {
+			// alert("result: " + output)
+			if(output != "Could not find user") {
+				//result[9] = output;
+				alert("user: " + output)
+			}
+		});
 
 	}
 

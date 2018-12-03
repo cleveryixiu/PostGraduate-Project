@@ -155,10 +155,10 @@ func(a *FoodChainCode) addLogInfo (stub shim.ChaincodeStubInterface,args []strin
     if ItemInfos.ItemID == ""{
         return shim.Error("ItemID can not be empty.")
     }
-    ItemInfos.ItemLogInfo.LogDepartureTm = args[1]
-    ItemInfos.ItemLogInfo.LogArrivalTm = args[2]
-    ItemInfos.ItemLogInfo.LogSender = args[3]
-    ItemInfos.ItemLogInfo.LogReceiver = args[4]
+    ItemInfos.ItemLogInfo.LogDepartureTm = args[3]
+    ItemInfos.ItemLogInfo.LogArrivalTm = args[4]
+    ItemInfos.ItemLogInfo.LogSender = args[1]
+    ItemInfos.ItemLogInfo.LogReceiver = args[2]
     ItemInfos.ItemLogInfo.LogMOT = args[5]
     ItemInfos.ItemLogInfo.LogCopID = args[6]
     

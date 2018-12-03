@@ -482,7 +482,7 @@ module.exports = (function () {
                 if (query_responses && query_responses.length == 1) {
                     if (query_responses[0] instanceof Error) {
                         console.error("error from query = ", query_responses[0]);
-                        res.send("Could not locate tuna")
+                        res.send("Could not find user")
 
                     } else {
                         console.log("Response is ", query_responses[0].toString());
@@ -490,11 +490,11 @@ module.exports = (function () {
                     }
                 } else {
                     console.log("No payloads were returned from query");
-                    res.send("Could not locate tuna")
+                    res.send("Could not find user")
                 }
             }).catch((err) => {
                 console.error('Failed to query successfully :: ' + err);
-                res.send("Could not locate tuna")
+                res.send("Could not find user")
             });
         },
 
