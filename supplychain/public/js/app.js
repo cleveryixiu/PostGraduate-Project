@@ -44,7 +44,7 @@ app.controller('appController', function ($scope, appFactory, $http) {
 
 		appFactory.queryTransit(id, function (data) {
 			$scope.transit_source = data;
-			alert("data: " + data);
+			// alert("data: " + data);
 			if ($scope.query_tuna == "Could not locate tuna") {
 				console.log()
 				$("#error_query").show();
@@ -154,26 +154,44 @@ app.controller('appController', function ($scope, appFactory, $http) {
 		var id = $scope.query_id;
 		var usrname = $scope.usn;
 		var psw = $scope.psw;
-		var uid = hex_hmac_md5(usrname, psw);
-		if (uid != id) {
-			// alert("uid:"+uid);
-			alert("The password or username is not correct");
-			window.location.href("/login");
-		}
 
 		$http.get('/user/' + id).success(function (output) {
 			// alert("result: " + output)
 			if(output != "Could not find user") {
-				//result[9] = output;
-				alert("user: " + output)
+				// alert("username: " + output.UserName)
+				// alert("usertype: " + output.UserType)
+				// alert("userpsw: " + output.UserPsw)
+				// alert("userID: " + output.UserID)
+				// alert("start")
+				var flag = [];
+				flag[0] = true;
+
+				if (output.UserID != id) {
+					alert("userID is not correct");
+					flag[0] = false;
+					window.location.href = "/";
+				}
+		
+				if(flag[0] == true && (output.UserName != usrname || output.UserPsw != psw)) {
+					alert("The username or password is not correct");
+					flag[0] = false;
+					window.location.href = "/";
+				}
+				
+				if(flag[0] == true) {
+					// window.location.href = "/index?id="+output.UserID+"&"+"name="+output.UserName;
+					// window.location.href = "/index?id="+output.UserID
+					window.location.href = "/login?id="+output.UserID+"&"+"name="+output.UserName;
+				}
+				
 			}
 		});
 
 	}
 
-	$scope.$watch('$viewContentLoaded', function() {
-		$scope.queryAllBlock();
-	});
+	// $scope.$watch('$viewContentLoaded', function() {
+	// 	$scope.queryAllBlock();
+	// });
 });
 
 app.factory('appFactory', function ($http) {

@@ -13,7 +13,7 @@ module.exports = (function () {
             res.render('welcome')
         },
         index: function (req, res) {
-            res.render('index')
+            res.render('index', {id: req.query.id, name: req.query.name})
         },
         search_html: function (req, res) {
             res.render('search')
