@@ -1,0 +1,30 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+services:
+
+  orderer3.example.com:
+    extends:
+      file:   base/docker-compose-base.yaml
+      service: orderer3.example.com
+    container_name: orderer3.example.com
+    volumes:
+      # 数据固化，将orderer的数据映射到本地
+      - ./chainData/orderer/orderer3/:/var/hyperledger/production/
+      - ./crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/msp:/var/hyperledger/orderer/msp
+      - ./crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls:/var/hyperledger/orderer/tls
+    extra_hosts:
+      - "z1:158.132.11.242"
+      - "z2:158.132.11.103"
+      - "z3:158.132.11.196"
+      - "k4:158.132.11.199"
+      - "k1:158.132.11.242"
+      - "k2:158.132.11.103"
+      - "k3:158.132.11.196"
+      - "orderer1.example.com:158.132.11.193"
+      - "orderer2.example.com:158.132.11.242"
+      - "orderer3.example.com:158.132.11.103"

@@ -1,0 +1,25 @@
+# Copyright IBM Corp. All Rights Reserved.
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+
+version: '2'
+
+services:
+
+  z2:
+    extends:
+      file: base/kafka-base.yaml
+      service: zookeeper
+    container_name: z2
+    hostname: z2
+    environment:
+      - ZOO_MY_ID=2
+      - ZOO_SERVERS=server.1=z1:2888:3888 server.2=z2:2888:3888 server.3=z3:2888:3888
+    volumes:
+       # 数据固化，将zookeeper产生的数据映射到本地，当zookeeper丢失等风险是不至于数据丢失
+       - ./chainData/zookeeper/z2/:/data/
+    extra_hosts:
+      - "z1:158.132.11.242"
+      - "z2:158.132.11.103"
+      - "z3:158.132.11.196"
