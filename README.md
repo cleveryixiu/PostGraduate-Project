@@ -3,6 +3,11 @@
 hyperledger app:https://github.com/zhazhalaila/hyperledger-simple-app
 multinodes:https://github.com/skylinelxw/chain-project
 
-# This is an small example to use hyperledger to develop food supply chain app.
-# Although the multi-node network has set up on 5 virtual machines. The network can not work for the app.
+# Multi-nodes network setup steps:
+# 1.Modify compose files
+# 2.Generate certificates
+# 3.Start container in the order of zookeeper, kafka, order, peer, ca on 5 machines.
+
+
+
 
